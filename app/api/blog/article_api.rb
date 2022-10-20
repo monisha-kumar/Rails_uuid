@@ -25,7 +25,16 @@ module Blog
       end
     end
 
-
+    post 'article/edit/:id' do
+      @article = Article.find(params[:id])
+      @article.update(title: params[:title],description: params[:description])
+      if @article.save
+        {
+          "article" => @article,
+          "message" => "created!!!"
+         }
+      end
+    end
 
   end
 end
