@@ -36,5 +36,16 @@ module Blog
       end
     end
 
+    get 'article/delete/:id' do
+      begin
+        @article = Article.find(params[:id])
+        if @article.destroy
+          "Article successfully deleted"
+        end
+      rescue => e
+        "Article is not found"
+      end
+    end
+
   end
 end
